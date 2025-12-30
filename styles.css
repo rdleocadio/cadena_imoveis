@@ -111,7 +111,7 @@ img{ max-width: 100%; display: block; }
   min-height: 78vh;
   display: grid;
   align-items: center;
-  border-bottom: 1px solid var(--border);
+  /* border-bottom: 1px solid var(--border); */
 
   /* Troque a imagem abaixo */
   background:
@@ -209,7 +209,7 @@ img{ max-width: 100%; display: block; }
 
 .avatar{
   width: 100%;
-  height: 240px;
+  height: auto;
   object-fit: cover;
 }
 
