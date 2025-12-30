@@ -89,9 +89,10 @@ img{ max-width: 100%; display: block; }
   color: #0b1020;
   font-weight: 800;
   box-shadow: 0 12px 28px rgba(140, 169, 255, .35);
+  transition: transform .2s ease, filter .2s ease;
 }
 
-.btn:hover{ transform: translateY(-1px); }
+.btn:hover{ transform: translateY(-1px); filter: brightness(.98); }
 .btn:active{ transform: translateY(0px); }
 
 .btn--ghost{
@@ -111,9 +112,7 @@ img{ max-width: 100%; display: block; }
   min-height: 78vh;
   display: grid;
   align-items: center;
-  /* border-bottom: 1px solid var(--border); */
 
-  /* Troque a imagem abaixo */
   background:
     linear-gradient(to bottom, rgba(255, 248, 222, .25), rgba(255, 248, 222, .85)),
     url("assets/sp.jpg") center/cover no-repeat;
@@ -205,8 +204,10 @@ img{ max-width: 100%; display: block; }
   background: rgba(255,255,255,.65);
   box-shadow: var(--shadow);
   overflow: hidden;
+  text-align: center;
 }
 
+/* ✅ Enquadramento melhor da foto do Cadena */
 .avatar{
   width: 100%;
   height: auto;
@@ -261,7 +262,18 @@ img{ max-width: 100%; display: block; }
   font-size: 13px;
 }
 
-/* Carousel (sem JS) */
+/* =========================
+   ✅ CARROSSEL COM SETAS
+   ========================= */
+
+/* wrapper do carrossel */
+.carousel-wrap{
+  position: relative;
+  display: grid;
+  align-items: center;
+}
+
+/* Carousel */
 .carousel{
   display: grid;
   grid-auto-flow: column;
@@ -269,7 +281,7 @@ img{ max-width: 100%; display: block; }
   gap: 14px;
 
   overflow-x: auto;
-  padding: 6px 4px 14px;
+  padding: 6px 44px 14px; /* ✅ espaço para setas */
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 
@@ -286,6 +298,36 @@ img{ max-width: 100%; display: block; }
   border-radius: 999px;
 }
 
+/* setas */
+.carousel-arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.78);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(15,23,42,.10);
+  transition: transform .18s ease, filter .18s ease;
+  z-index: 5;
+}
+
+.carousel-arrow--left{ left: 6px; }
+.carousel-arrow--right{ right: 6px; }
+
+.carousel-arrow:hover{
+  transform: translateY(-50%) translateY(-1px);
+  filter: brightness(.98);
+}
+.carousel-arrow:active{
+  transform: translateY(-50%);
+}
+
+/* Card */
 .property-card{
   scroll-snap-align: start;
   border-radius: var(--radius);
@@ -398,18 +440,53 @@ img{ max-width: 100%; display: block; }
   border: 1px solid var(--border);
   background: rgba(255,255,255,.72);
   box-shadow: 0 12px 28px rgba(15, 23, 42, .10);
+  transition: transform .18s ease, filter .18s ease;
 }
 
-.action-card:hover{ transform: translateY(-1px); }
+.action-card:hover{ transform: translateY(-1px); filter: brightness(.99); }
 
-.action-icon{
-  width: 46px; height: 46px;
-  border-radius: 16px;
+.icon-actions{
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  justify-content: center;
+}
+
+.icon-btn{
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
   display: grid;
   place-items: center;
-  background: rgba(140,169,255,.40);
-  border: 1px solid rgba(15,23,42,.10);
-  font-size: 22px;
+
+  background: rgba(255,255,255,.70);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, .10);
+
+  transition: transform .18s ease, filter .18s ease;
+}
+
+.icon-btn i{
+  font-size: 18px;
+  color: #0b1020;
+}
+
+.icon-btn:hover i{
+  color: #AAC4F5; /* mesma cor do botão WhatsApp */
+}
+
+.icon-btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(.98);
+}
+
+.icon-btn:active{
+  transform: translateY(0);
+}
+
+.icon-btn:focus-visible{
+  outline: 2px solid #0f172a;
+  outline-offset: 3px;
 }
 
 .action-card h3{
@@ -474,8 +551,54 @@ img{ max-width: 100%; display: block; }
   .hero-card{ max-width: 520px; }
 }
 
+/* ✅ no mobile: some com setas, mantém swipe */
 @media (max-width: 720px){
-  .nav{ display: none; } /* simples e minimalista no mobile */
+  .nav{ display: none; }
   .cards-2{ grid-template-columns: 1fr; }
   .hero-metrics{ grid-template-columns: 1fr; }
+
+  .carousel{ padding: 6px 4px 14px; }
+  .carousel-arrow{ display: none; }
+}
+
+/* WhatsApp flutuante (dentro da paleta) */
+.whatsapp-float{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #25D366; /* cor oficial WhatsApp */
+  border: none;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, .25);
+  font-size: 26px;
+  z-index: 9999;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.whatsapp-float i{
+  color: #ffffff; /* ícone branco (padrão WhatsApp) */
+}
+
+.whatsapp-float:hover{
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, .35);
+  filter: brightness(0.95);
+}
+
+.whatsapp-float:focus-visible{
+  outline: 2px solid #0f172a;
+  outline-offset: 3px;
+}
+
+#servicos .section-head{
+  justify-content: center;
+  text-align: center;
+}
+
+#servicos .section-head > div{
+  max-width: 520px; /* deixa o texto mais elegante */
 }

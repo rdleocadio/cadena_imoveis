@@ -4,10 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadena • Minha Casa Minha Vida • SP</title>
+
+  <!-- Font Awesome (ícones) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  >
+
+  <!-- Seu CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+
+  <!-- WhatsApp flutuante (TEM que ficar dentro do body) -->
+  <a
+    href="https://wa.me/55SEUNUMERO"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Falar no WhatsApp"
+    title="Falar no WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#">
@@ -25,7 +48,6 @@
 
   <!-- HERO / BANNER -->
   <section class="hero" aria-label="Banner com paisagem de São Paulo">
-    <!-- Troque a imagem em CSS (hero background) -->
     <div class="hero-overlay"></div>
 
     <div class="container hero-inner">
@@ -61,16 +83,27 @@
       <aside class="hero-card" aria-label="Card de apresentação do corretor">
         <img class="avatar" src="assets/cadena.jpg" alt="Foto do Cadena">
         <div class="hero-card-body">
-          <h2>Cadena</h2>
+          <h2>Roberto Cadena</h2>
           <p class="muted">
             Corretor especializado em Minha Casa Minha Vida na região de São Paulo.
             Te ajudo a encontrar a melhor opção com segurança e clareza.
           </p>
 
-          <div class="hero-card-actions">
-            <a class="btn btn--small" href="#contato">Contato</a>
-            <a class="btn btn--small btn--ghost" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
-              WhatsApp
+          <div class="icon-actions">
+            <a href="https://wa.me/5511999999999" class="icon-btn" aria-label="Falar pelo WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+            <a href="tel:+5511999999999" class="icon-btn" aria-label="Ligar para o corretor">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+
+            <a href="mailto:contato@seudominio.com" class="icon-btn" aria-label="Enviar e-mail">
+              <i class="fa-regular fa-envelope"></i>
+            </a>
+
+            <a href="https://instagram.com/SEUINSTAGRAM" class="icon-btn" aria-label="Abrir perfil no Instagram">
+              <i class="fa-brands fa-instagram"></i>
             </a>
           </div>
         </div>
@@ -84,110 +117,170 @@
       <div class="container section-head">
         <div>
           <h2>Imóveis em destaque</h2>
-          <p class="muted">Arraste para o lado (ou use os botões) para ver mais opções.</p>
-        </div>
-
-        <div class="carousel-controls" aria-label="Controles do carrossel">
-          <a class="chip" href="#card-1">1</a>
-          <a class="chip" href="#card-2">2</a>
-          <a class="chip" href="#card-3">3</a>
-          <a class="chip" href="#card-4">4</a>
+          <p class="muted">Clique nas setas para navegar pelos imóveis.</p>
         </div>
       </div>
 
       <div class="container">
-        <div class="carousel" aria-label="Lista de imóveis em carrossel">
-          <!-- Cada card tem um id para os “chips” pularem até ele -->
-          <article id="card-1" class="property-card">
-            <div class="property-top">
-              <span class="tag">MCMV</span>
-              <span class="tag tag--soft">Pronto p/ morar</span>
-            </div>
+        <!-- wrapper + setas -->
+        <div class="carousel-wrap">
+          <button class="carousel-arrow carousel-arrow--left" type="button" aria-label="Anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
 
-            <h3>São Paulo • SP</h3>
-            <p class="property-sub">Bairro: Campo Limpo</p>
-
-            <div class="property-grid">
-              <div class="kv">
-                <span class="k">Metragem</span>
-                <span class="v">42 m²</span>
+          <div class="carousel" id="imoveisCarousel" aria-label="Lista de imóveis em carrossel">
+            <!-- 1 -->
+            <article id="card-1" class="property-card">
+              <div class="property-top">
+                <span class="tag">MCMV</span>
+                <span class="tag tag--soft">Pronto p/ morar</span>
               </div>
-              <div class="kv">
-                <span class="k">Quartos</span>
-                <span class="v">2</span>
+
+              <h3>São Paulo • SP</h3>
+              <p class="property-sub">Bairro: Campo Limpo</p>
+
+              <div class="property-grid">
+                <div class="kv"><span class="k">Metragem</span><span class="v">42 m²</span></div>
+                <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+                <div class="kv"><span class="k">Vaga</span><span class="v">1</span></div>
+                <div class="kv"><span class="k">Valor</span><span class="v price">R$ 235.000</span></div>
               </div>
-              <div class="kv">
-                <span class="k">Vaga</span>
-                <span class="v">1</span>
+
+              <a class="btn btn--small" href="#contato">Quero saber mais</a>
+            </article>
+
+            <!-- 2 -->
+            <article id="card-2" class="property-card">
+              <div class="property-top">
+                <span class="tag">MCMV</span>
+                <span class="tag tag--soft">Lançamento</span>
               </div>
-              <div class="kv">
-                <span class="k">Valor</span>
-                <span class="v price">R$ 235.000</span>
+
+              <h3>Diadema • SP</h3>
+              <p class="property-sub">Bairro: Centro</p>
+
+              <div class="property-grid">
+                <div class="kv"><span class="k">Metragem</span><span class="v">38 m²</span></div>
+                <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+                <div class="kv"><span class="k">Vaga</span><span class="v">—</span></div>
+                <div class="kv"><span class="k">Valor</span><span class="v price">R$ 210.000</span></div>
               </div>
-            </div>
 
-            <a class="btn btn--small" href="#contato">Quero saber mais</a>
-          </article>
+              <a class="btn btn--small" href="#contato">Quero saber mais</a>
+            </article>
 
-          <article id="card-2" class="property-card">
-            <div class="property-top">
-              <span class="tag">MCMV</span>
-              <span class="tag tag--soft">Lançamento</span>
-            </div>
+            <!-- 3 -->
+            <article id="card-3" class="property-card">
+              <div class="property-top">
+                <span class="tag">MCMV</span>
+                <span class="tag tag--soft">Próx. metrô</span>
+              </div>
 
-            <h3>Diadema • SP</h3>
-            <p class="property-sub">Bairro: Centro</p>
+              <h3>São Bernardo do Campo • SP</h3>
+              <p class="property-sub">Bairro: Rudge Ramos</p>
 
-            <div class="property-grid">
-              <div class="kv"><span class="k">Metragem</span><span class="v">38 m²</span></div>
-              <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
-              <div class="kv"><span class="k">Vaga</span><span class="v">—</span></div>
-              <div class="kv"><span class="k">Valor</span><span class="v price">R$ 210.000</span></div>
-            </div>
+              <div class="property-grid">
+                <div class="kv"><span class="k">Metragem</span><span class="v">45 m²</span></div>
+                <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+                <div class="kv"><span class="k">Vaga</span><span class="v">1</span></div>
+                <div class="kv"><span class="k">Valor</span><span class="v price">R$ 255.000</span></div>
+              </div>
 
-            <a class="btn btn--small" href="#contato">Quero saber mais</a>
-          </article>
+              <a class="btn btn--small" href="#contato">Quero saber mais</a>
+            </article>
 
-          <article id="card-3" class="property-card">
-            <div class="property-top">
-              <span class="tag">MCMV</span>
-              <span class="tag tag--soft">Próx. metrô</span>
-            </div>
+            <!-- 4 -->
+            <article id="card-4" class="property-card">
+              <div class="property-top">
+                <span class="tag">MCMV</span>
+                <span class="tag tag--soft">Entrada facilitada</span>
+              </div>
 
-            <h3>São Bernardo do Campo • SP</h3>
-            <p class="property-sub">Bairro: Rudge Ramos</p>
+              <h3>Osasco • SP</h3>
+              <p class="property-sub">Bairro: Presidente Altino</p>
 
-            <div class="property-grid">
-              <div class="kv"><span class="k">Metragem</span><span class="v">45 m²</span></div>
-              <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
-              <div class="kv"><span class="k">Vaga</span><span class="v">1</span></div>
-              <div class="kv"><span class="k">Valor</span><span class="v price">R$ 255.000</span></div>
-            </div>
+              <div class="property-grid">
+                <div class="kv"><span class="k">Metragem</span><span class="v">40 m²</span></div>
+                <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+                <div class="kv"><span class="k">Vaga</span><span class="v">—</span></div>
+                <div class="kv"><span class="k">Valor</span><span class="v price">R$ 228.000</span></div>
+              </div>
 
-            <a class="btn btn--small" href="#contato">Quero saber mais</a>
-          </article>
+              <a class="btn btn--small" href="#contato">Quero saber mais</a>
+            </article>
 
-          <article id="card-4" class="property-card">
-            <div class="property-top">
-              <span class="tag">MCMV</span>
-              <span class="tag tag--soft">Entrada facilitada</span>
-            </div>
+            <!-- 5 a 8 (copie um card e altere os dados) -->
+            <article id="card-5" class="property-card">
+              <div class="property-top">
+                <span class="tag">MCMV</span>
+                <span class="tag tag--soft">Condomínio clube</span>
+              </div>
+              <h3>Guarulhos • SP</h3>
+              <p class="property-sub">Bairro: Vila Galvão</p>
+              <div class="property-grid">
+                <div class="kv"><span class="k">Metragem</span><span class="v">41 m²</span></div>
+                <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+                <div class="kv"><span class="k">Vaga</span><span class="v">1</span></div>
+                <div class="kv"><span class="k">Valor</span><span class="v price">R$ 225.000</span></div>
+              </div>
+              <a class="btn btn--small" href="#contato">Quero saber mais</a>
+            </article>
 
-            <h3>Osasco • SP</h3>
-            <p class="property-sub">Bairro: Presidente Altino</p>
+            <article id="card-6" class="property-card">
+              <div class="property-top">
+                <span class="tag">MCMV</span>
+                <span class="tag tag--soft">Últimas unidades</span>
+              </div>
+              <h3>Santo André • SP</h3>
+              <p class="property-sub">Bairro: Vila Assunção</p>
+              <div class="property-grid">
+                <div class="kv"><span class="k">Metragem</span><span class="v">39 m²</span></div>
+                <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+                <div class="kv"><span class="k">Vaga</span><span class="v">—</span></div>
+                <div class="kv"><span class="k">Valor</span><span class="v price">R$ 219.000</span></div>
+              </div>
+              <a class="btn btn--small" href="#contato">Quero saber mais</a>
+            </article>
 
-            <div class="property-grid">
-              <div class="kv"><span class="k">Metragem</span><span class="v">40 m²</span></div>
-              <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
-              <div class="kv"><span class="k">Vaga</span><span class="v">—</span></div>
-              <div class="kv"><span class="k">Valor</span><span class="v price">R$ 228.000</span></div>
-            </div>
+            <article id="card-7" class="property-card">
+              <div class="property-top">
+                <span class="tag">MCMV</span>
+                <span class="tag tag--soft">Boa mobilidade</span>
+              </div>
+              <h3>São Paulo • SP</h3>
+              <p class="property-sub">Bairro: Jabaquara</p>
+              <div class="property-grid">
+                <div class="kv"><span class="k">Metragem</span><span class="v">43 m²</span></div>
+                <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+                <div class="kv"><span class="k">Vaga</span><span class="v">1</span></div>
+                <div class="kv"><span class="k">Valor</span><span class="v price">R$ 248.000</span></div>
+              </div>
+              <a class="btn btn--small" href="#contato">Quero saber mais</a>
+            </article>
 
-            <a class="btn btn--small" href="#contato">Quero saber mais</a>
-          </article>
+            <article id="card-8" class="property-card">
+              <div class="property-top">
+                <span class="tag">MCMV</span>
+                <span class="tag tag--soft">Entrada reduzida</span>
+              </div>
+              <h3>Taboão da Serra • SP</h3>
+              <p class="property-sub">Bairro: Jardim Helena</p>
+              <div class="property-grid">
+                <div class="kv"><span class="k">Metragem</span><span class="v">37 m²</span></div>
+                <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+                <div class="kv"><span class="k">Vaga</span><span class="v">—</span></div>
+                <div class="kv"><span class="k">Valor</span><span class="v price">R$ 205.000</span></div>
+              </div>
+              <a class="btn btn--small" href="#contato">Quero saber mais</a>
+            </article>
+          </div>
+
+          <button class="carousel-arrow carousel-arrow--right" type="button" aria-label="Próximo">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
         </div>
 
-        <p class="hint muted">Dica: no celular, arraste lateralmente. No desktop, use os botões 1–4.</p>
+        <p class="hint muted">Dica: no celular, arraste lateralmente.</p>
       </div>
     </section>
 
@@ -259,8 +352,29 @@
   </footer>
 
   <script>
-    // só pra atualizar o ano automaticamente (opcional)
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Carrossel com setas
+    const carousel = document.getElementById("imoveisCarousel");
+    const btnPrev = document.querySelector(".carousel-arrow--left");
+    const btnNext = document.querySelector(".carousel-arrow--right");
+
+    function step() {
+      const card = carousel.querySelector(".property-card");
+      if (!card) return 320;
+      const styles = getComputedStyle(carousel);
+      const gap = parseInt(styles.columnGap || styles.gap || "14", 10) || 14;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    btnNext.addEventListener("click", () => {
+      carousel.scrollBy({ left: step(), behavior: "smooth" });
+    });
+
+    btnPrev.addEventListener("click", () => {
+      carousel.scrollBy({ left: -step(), behavior: "smooth" });
+    });
   </script>
+
 </body>
 </html>
