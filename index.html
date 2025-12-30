@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadena • Minha Casa Minha Vida • SP</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <span class="brand-dot"></span>
+        <span class="brand-name">Cadena Imóveis</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#imoveis">Imóveis</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato" class="btn btn--small">Falar no WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO / BANNER -->
+  <section class="hero" aria-label="Banner com paisagem de São Paulo">
+    <!-- Troque a imagem em CSS (hero background) -->
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="pill">Especialista em Minha Casa Minha Vida • São Paulo</span>
+        <h1>Seu apartamento em SP com o suporte certo do começo ao fim.</h1>
+        <p>
+          Atendimento direto, opções filtradas por perfil e orientação em cada etapa:
+          documentação, análise e encaminhamento para financiamento.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#imoveis">Ver imóveis</a>
+          <a class="btn btn--ghost" href="simulacao.html">Simular financiamento</a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric">
+            <span class="metric-title">Foco</span>
+            <span class="metric-value">MCMV</span>
+          </div>
+          <div class="metric">
+            <span class="metric-title">Região</span>
+            <span class="metric-value">Grande SP</span>
+          </div>
+          <div class="metric">
+            <span class="metric-title">Atendimento</span>
+            <span class="metric-value">Personalizado</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Card de apresentação do corretor">
+        <img class="avatar" src="assets/cadena.jpg" alt="Foto do Cadena">
+        <div class="hero-card-body">
+          <h2>Cadena</h2>
+          <p class="muted">
+            Corretor especializado em Minha Casa Minha Vida na região de São Paulo.
+            Te ajudo a encontrar a melhor opção com segurança e clareza.
+          </p>
+
+          <div class="hero-card-actions">
+            <a class="btn btn--small" href="#contato">Contato</a>
+            <a class="btn btn--small btn--ghost" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <!-- CARROSSEL -->
+    <section id="imoveis" class="section">
+      <div class="container section-head">
+        <div>
+          <h2>Imóveis em destaque</h2>
+          <p class="muted">Arraste para o lado (ou use os botões) para ver mais opções.</p>
+        </div>
+
+        <div class="carousel-controls" aria-label="Controles do carrossel">
+          <a class="chip" href="#card-1">1</a>
+          <a class="chip" href="#card-2">2</a>
+          <a class="chip" href="#card-3">3</a>
+          <a class="chip" href="#card-4">4</a>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="carousel" aria-label="Lista de imóveis em carrossel">
+          <!-- Cada card tem um id para os “chips” pularem até ele -->
+          <article id="card-1" class="property-card">
+            <div class="property-top">
+              <span class="tag">MCMV</span>
+              <span class="tag tag--soft">Pronto p/ morar</span>
+            </div>
+
+            <h3>São Paulo • SP</h3>
+            <p class="property-sub">Bairro: Campo Limpo</p>
+
+            <div class="property-grid">
+              <div class="kv">
+                <span class="k">Metragem</span>
+                <span class="v">42 m²</span>
+              </div>
+              <div class="kv">
+                <span class="k">Quartos</span>
+                <span class="v">2</span>
+              </div>
+              <div class="kv">
+                <span class="k">Vaga</span>
+                <span class="v">1</span>
+              </div>
+              <div class="kv">
+                <span class="k">Valor</span>
+                <span class="v price">R$ 235.000</span>
+              </div>
+            </div>
+
+            <a class="btn btn--small" href="#contato">Quero saber mais</a>
+          </article>
+
+          <article id="card-2" class="property-card">
+            <div class="property-top">
+              <span class="tag">MCMV</span>
+              <span class="tag tag--soft">Lançamento</span>
+            </div>
+
+            <h3>Diadema • SP</h3>
+            <p class="property-sub">Bairro: Centro</p>
+
+            <div class="property-grid">
+              <div class="kv"><span class="k">Metragem</span><span class="v">38 m²</span></div>
+              <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+              <div class="kv"><span class="k">Vaga</span><span class="v">—</span></div>
+              <div class="kv"><span class="k">Valor</span><span class="v price">R$ 210.000</span></div>
+            </div>
+
+            <a class="btn btn--small" href="#contato">Quero saber mais</a>
+          </article>
+
+          <article id="card-3" class="property-card">
+            <div class="property-top">
+              <span class="tag">MCMV</span>
+              <span class="tag tag--soft">Próx. metrô</span>
+            </div>
+
+            <h3>São Bernardo do Campo • SP</h3>
+            <p class="property-sub">Bairro: Rudge Ramos</p>
+
+            <div class="property-grid">
+              <div class="kv"><span class="k">Metragem</span><span class="v">45 m²</span></div>
+              <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+              <div class="kv"><span class="k">Vaga</span><span class="v">1</span></div>
+              <div class="kv"><span class="k">Valor</span><span class="v price">R$ 255.000</span></div>
+            </div>
+
+            <a class="btn btn--small" href="#contato">Quero saber mais</a>
+          </article>
+
+          <article id="card-4" class="property-card">
+            <div class="property-top">
+              <span class="tag">MCMV</span>
+              <span class="tag tag--soft">Entrada facilitada</span>
+            </div>
+
+            <h3>Osasco • SP</h3>
+            <p class="property-sub">Bairro: Presidente Altino</p>
+
+            <div class="property-grid">
+              <div class="kv"><span class="k">Metragem</span><span class="v">40 m²</span></div>
+              <div class="kv"><span class="k">Quartos</span><span class="v">2</span></div>
+              <div class="kv"><span class="k">Vaga</span><span class="v">—</span></div>
+              <div class="kv"><span class="k">Valor</span><span class="v price">R$ 228.000</span></div>
+            </div>
+
+            <a class="btn btn--small" href="#contato">Quero saber mais</a>
+          </article>
+        </div>
+
+        <p class="hint muted">Dica: no celular, arraste lateralmente. No desktop, use os botões 1–4.</p>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS (cards finais) -->
+    <section id="servicos" class="section section--alt">
+      <div class="container section-head">
+        <div>
+          <h2>Próximos passos</h2>
+          <p class="muted">Escolha um caminho rápido e eu te direciono para a etapa certa.</p>
+        </div>
+      </div>
+
+      <div class="container cards-2">
+        <a class="action-card" href="sob-encomenda.html">
+          <div class="action-icon" aria-hidden="true">🏗️</div>
+          <div>
+            <h3>Imóvel sob encomenda</h3>
+            <p class="muted">
+              Me diga sua região, metragem e teto de parcela — eu filtro e te envio opções alinhadas.
+            </p>
+            <span class="action-link">Ir para “Sob encomenda” →</span>
+          </div>
+        </a>
+
+        <a class="action-card" href="simulacao.html">
+          <div class="action-icon" aria-hidden="true">💳</div>
+          <div>
+            <h3>Financiamento</h3>
+            <p class="muted">
+              Simule valores e entenda o que precisa para aprovação (renda, documentos e prazos).
+            </p>
+            <span class="action-link">Ir para “Simulação” →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section">
+      <div class="container contact">
+        <div class="contact-box">
+          <h2>Vamos encontrar seu imóvel?</h2>
+          <p class="muted">
+            Me mande: cidade/bairro, faixa de valor, renda aproximada e se tem FGTS.
+          </p>
+
+          <div class="contact-actions">
+            <a class="btn" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
+              Chamar no WhatsApp
+            </a>
+            <a class="btn btn--ghost" href="mailto:contato@seudominio.com">
+              Enviar e-mail
+            </a>
+          </div>
+
+          <p class="tiny muted">
+            *Links e páginas (simulação/sob encomenda) são placeholders para você criar depois.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="muted">© <span id="year"></span> Cadena Imóveis • Minha Casa Minha Vida • SP</span>
+      <a class="muted" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Voltar ao topo</a>
+    </div>
+  </footer>
+
+  <script>
+    // só pra atualizar o ano automaticamente (opcional)
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
