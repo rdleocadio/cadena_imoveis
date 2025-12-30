@@ -1,5 +1,5 @@
 :root{
-  --bg: #FFF8DE;
+  --bg: #FBFBFB;
   --surface: #FFF2C6;
   --primary: #8CA9FF;
   --accent: #AAC4F5;
@@ -114,7 +114,7 @@ img{ max-width: 100%; display: block; }
   align-items: center;
 
   background:
-    linear-gradient(to bottom, rgba(255, 248, 222, .25), rgba(255, 248, 222, .85)),
+    linear-gradient(to bottom, rgba(255, 248, 222, .25), #FBFBFB),
     url("assets/sp.jpg") center/cover no-repeat;
 }
 
@@ -239,7 +239,7 @@ img{ max-width: 100%; display: block; }
 }
 
 .section--alt{
-  background: rgba(255, 242, 198, .35);
+  background: #FBFBFB;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
