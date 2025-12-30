@@ -3,6 +3,7 @@
   --surface: #FFF2C6;
   --primary: #8CA9FF;
   --accent: #AAC4F5;
+  --surface-solid: #FBFBFB;
 
   --text: #0f172a;
   --muted: rgba(15, 23, 42, .72);
@@ -16,11 +17,21 @@
 
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
+
 body{
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
-  background: var(--bg);
+
+  /* FUNDO GLOBAL (imagem + seu degradê) */
+  background:
+    /* overlay claro (o mesmo efeito que você tinha) */
+    linear-gradient(to bottom, rgba(255, 248, 222, .25), #FBFBFB),
+    radial-gradient(900px 400px at 20% 20%, rgba(140,169,255,.35), transparent 60%),
+    radial-gradient(900px 400px at 80% 10%, rgba(170,196,245,.35), transparent 60%),
+    url("assets/sp.jpg") center/cover no-repeat;
+
+  background-attachment: fixed; /* mantém o fundo “parallax” no scroll */
 }
 
 a{ color: inherit; text-decoration: none; }
@@ -112,10 +123,7 @@ img{ max-width: 100%; display: block; }
   min-height: 78vh;
   display: grid;
   align-items: center;
-
-  background:
-    linear-gradient(to bottom, rgba(255, 248, 222, .25), #FBFBFB),
-    url("assets/sp.jpg") center/cover no-repeat;
+  background: transparent;
 }
 
 .hero-overlay{
@@ -123,8 +131,9 @@ img{ max-width: 100%; display: block; }
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(900px 400px at 20% 20%, rgba(140,169,255,.35), transparent 60%),
-    radial-gradient(900px 400px at 80% 10%, rgba(170,196,245,.35), transparent 60%);
+    radial-gradient(900px 400px at 20% 20%, #FBFBFB, transparent 60%),
+    radial-gradient(900px 400px at 80% 10%, #FBFBFB, transparent 60%);
+  display: none;
 }
 
 .hero-inner{
@@ -178,7 +187,7 @@ img{ max-width: 100%; display: block; }
 
 .metric{
   border: 1px solid var(--border);
-  background: rgba(255,255,255,.55);
+  background: var(--surface-solid);
   border-radius: 16px;
   padding: 12px;
 }
@@ -197,11 +206,12 @@ img{ max-width: 100%; display: block; }
   margin-top: 4px;
 }
 
-.hero-card{
+.hero-card,
+.contact-box{
   align-self: center;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: rgba(255,255,255,.65);
+  background: var(--surface-solid);
   box-shadow: var(--shadow);
   overflow: hidden;
   text-align: center;
@@ -239,9 +249,7 @@ img{ max-width: 100%; display: block; }
 }
 
 .section--alt{
-  background: #FBFBFB;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: transparent;
 }
 
 .section-head{
@@ -328,11 +336,12 @@ img{ max-width: 100%; display: block; }
 }
 
 /* Card */
-.property-card{
+.property-card,
+.action-card{
   scroll-snap-align: start;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: rgba(255,255,255,.72);
+  background: var(--surface-solid);
   box-shadow: 0 12px 28px rgba(15, 23, 42, .10);
   padding: 16px;
 }
@@ -381,7 +390,7 @@ img{ max-width: 100%; display: block; }
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 10px;
-  background: rgba(255, 248, 222, .55);
+  background: #FFF2C6;
 }
 
 .k{
@@ -417,7 +426,7 @@ img{ max-width: 100%; display: block; }
   justify-content: center;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: rgba(255,255,255,.55);
+  background: #C6E7FF;
   font-weight: 900;
 }
 
@@ -438,7 +447,7 @@ img{ max-width: 100%; display: block; }
   padding: 18px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: rgba(255,255,255,.72);
+  background: var(--surface-solid);
   box-shadow: 0 12px 28px rgba(15, 23, 42, .10);
   transition: transform .18s ease, filter .18s ease;
 }
@@ -459,7 +468,7 @@ img{ max-width: 100%; display: block; }
   display: grid;
   place-items: center;
 
-  background: rgba(255,255,255,.70);
+  background: #C6E7FF;
   border: 1px solid var(--border);
   box-shadow: 0 10px 22px rgba(15, 23, 42, .10);
 
@@ -510,7 +519,7 @@ img{ max-width: 100%; display: block; }
   width: min(760px, 100%);
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: rgba(255,255,255,.72);
+  background: var(--surface-solid);
   box-shadow: var(--shadow);
   padding: 22px;
 }
