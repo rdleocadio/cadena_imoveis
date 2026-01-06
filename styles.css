@@ -863,3 +863,21 @@ img{ max-width: 100%; display: block; }
   font-weight: 900;
   text-align: center;
 }
+
+/* Padroniza tipografia da textarea com os demais campos */
+.encomenda-form textarea{
+  font-family: inherit;     /* usa a mesma fonte do site */
+  font-size: 14px;          /* igual aos inputs */
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.encomenda-form input,
+.encomenda-form select,
+.encomenda-form textarea{
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+  font-weight: 500;
+}
