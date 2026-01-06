@@ -717,25 +717,149 @@ img{ max-width: 100%; display: block; }
   outline-offset: 3px;
 }
 
-/* Centraliza o bloco "serviços" */
-#servicos .section-head{
-  justify-content: center;
-  text-align: center;
-}
-
-#servicos .section-head > div{
-  max-width: 520px;
-}
-
 /* Destaque visual do título "Imóveis em destaque" */
-#imoveis .section-head{
+
+#imoveis .section-head,
+#servicos .section-head{
   justify-content: center;   /* centraliza horizontalmente */
   text-align: center;
 }
 
-#imoveis .section-head h2{
+#imoveis .section-head h2,
+#servicos .section-head h2{
   font-size: clamp(28px, 4vw, 40px); /* maior e responsivo */
   font-weight: 900;
   letter-spacing: -0.03em;
   margin-bottom: 12px;
+}
+/* Substituto dos cards-2: formulário */
+.cards-2{
+  display: grid;
+  grid-template-columns: 1fr; /* mantém 1 coluna */
+  gap: 14px;
+}
+
+.encomenda-form{
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-solid);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, .10);
+  padding: 18px;
+}
+
+.encomenda-head h3{
+  margin: 0 0 6px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.encomenda-head p{
+  margin: 0 0 14px;
+}
+
+.form-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-field--full{
+  grid-column: 1 / -1;
+}
+
+.encomenda-form label{
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(15,23,42,.82);
+  margin-bottom: 6px;
+}
+
+.encomenda-form input,
+.encomenda-form select,
+.encomenda-form textarea{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.62);
+  color: var(--text);
+  outline: none;
+}
+
+.encomenda-form textarea{
+  resize: vertical;
+  min-height: 110px;
+}
+
+.encomenda-form input:focus,
+.encomenda-form select:focus,
+.encomenda-form textarea:focus{
+  border-color: rgba(19,36,64,.35);
+  box-shadow: 0 0 0 4px rgba(19,36,64,.10);
+}
+
+.form-actions{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.form-note{
+  font-size: 12px;
+}
+
+/* Mobile: inputs empilhados */
+@media (max-width: 720px){
+  .form-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Grid alinhada com hero-copy + hero-card */
+.section--encomenda .container{
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: 28px;
+}
+
+.section--encomenda .cards-2{
+  grid-column: 1 / 2; /* mesma coluna do hero-copy */
+}
+
+@media (max-width: 940px){
+  .section--encomenda .container{
+    grid-template-columns: 1fr;
+  }
+
+  .section--encomenda .cards-2{
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 940px){
+  .cards-2--align-hero{
+    grid-template-columns: 1fr;
+  }
+
+  .cards-2--align-hero .encomenda-form{
+    grid-column: 1;
+  }
+}
+
+/* Centraliza e destaca o botão do formulário */
+.form-actions{
+  display: flex;
+  justify-content: center;   /* centraliza horizontalmente */
+  margin-top: 20px;
+}
+
+.form-actions .btn{
+  min-width: 280px;          /* botão maior */
+  padding: 14px 24px;        /* mais alto e confortável */
+  font-size: 16px;
+  font-weight: 900;
+  text-align: center;
 }

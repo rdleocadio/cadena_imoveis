@@ -286,53 +286,63 @@
           <p class="muted">Escolha um caminho rápido e eu te direciono para a etapa certa.</p>
         </div>
       </div>
+    <div class="container">
+      <div class="cards-2 cards-2--align-hero">
+        <div class="cards-2">
+          <form class="encomenda-form" action="SEU_FORM_ENDPOINT" method="POST">
 
-      <div class="container cards-2">
-        <a class="action-card" href="sob-encomenda.html">
-          <div class="action-icon" aria-hidden="true">🏗️</div>
-          <div>
-            <h3>Imóvel sob encomenda</h3>
-            <p class="muted">
-              Me diga sua região, metragem e teto de parcela — eu filtro e te envio opções alinhadas.
-            </p>
-            <span class="action-link">Ir para “Sob encomenda” →</span>
-          </div>
-        </a>
+            <!-- assunto do email (Formspree suporta _subject) -->
+            <input type="hidden" name="_subject" value="Imóvel sob sua encomenda">
 
-        <a class="action-card" href="simulacao.html">
-          <div class="action-icon" aria-hidden="true">💳</div>
-          <div>
-            <h3>Financiamento</h3>
-            <p class="muted">
-              Simule valores e entenda o que precisa para aprovação (renda, documentos e prazos).
-            </p>
-            <span class="action-link">Ir para “Simulação” →</span>
-          </div>
-        </a>
-      </div>
-    </section>
+            <!-- (Opcional) Redirecionamento após enviar -->
+            <!-- <input type="hidden" name="_redirect" value="https://seusite.com/obrigado.html"> -->
 
-    <!-- CONTATO -->
-    <section id="contato" class="section">
-      <div class="container contact">
-        <div class="contact-box">
-          <h2>Vamos encontrar seu imóvel?</h2>
-          <p class="muted">
-            Me mande: cidade/bairro, faixa de valor, renda aproximada e se tem FGTS.
-          </p>
+            <div class="form-grid">
+              <div class="form-field form-field--full">
+                <label for="localizacao">Localização (região / bairro / referência)</label>
+                <input id="localizacao" name="localizacao" type="text" required
+                      placeholder="Ex: Zona Sul / Chácara Santo Antônio / perto do metrô">
+              </div>
 
-          <div class="contact-actions">
-            <a class="btn" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
-              Chamar no WhatsApp
-            </a>
-            <a class="btn btn--ghost" href="mailto:contato@seudominio.com">
-              Enviar e-mail
-            </a>
-          </div>
+              <div class="form-field">
+                <label for="tamanho">Tamanho do imóvel (m²)</label>
+                <input id="tamanho" name="tamanho_m2" type="number" min="10" step="1" required
+                      placeholder="Ex: 65">
+              </div>
 
-          <p class="tiny muted">
-            *Links e páginas (simulação/sob encomenda) são placeholders para você criar depois.
-          </p>
+              <div class="form-field">
+                <label for="dormitorios">Quantidade de dormitórios</label>
+                <select id="dormitorios" name="dormitorios" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4+</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="vaga">Vaga de garagem</label>
+                <select id="vaga" name="vaga_garagem" required>
+                  <option value="" disabled selected>Selecione</option>
+                  <option>Não precisa</option>
+                  <option>1 vaga</option>
+                  <option>2 vagas</option>
+                  <option>3+ vagas</option>
+                </select>
+              </div>
+
+              <div class="form-field form-field--full">
+                <label for="adicionais">Adicionais (academia, lavanderia, pet place...)</label>
+                <textarea id="adicionais" name="adicionais" rows="4"
+                          placeholder="Ex: varanda gourmet, lazer completo, pet place, lavanderia, coworking..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn">Enviar para o Roberto</button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
