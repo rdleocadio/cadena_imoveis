@@ -1,17 +1,25 @@
+/* =========================
+   ✅ PALETA MINIMALISTA
+   (mantém a foto de fundo e limpa as cores)
+   ========================= */
+
 :root{
+  /* base */
   --bg: #FBFBFB;
-  --surface: #FFF2C6;
-  --primary: #8CA9FF;
-  --accent: #AAC4F5;
-  --surface-solid: #FBFBFB;
-
+  --surface-solid: rgba(255, 255, 255, .78);  /* cards “glass” */
+  --surface-strong: rgba(255, 255, 255, .92); /* maior contraste quando precisar */
   --text: #0f172a;
-  --muted: rgba(15, 23, 42, .72);
-  --border: rgba(15, 23, 42, .12);
+  --muted: rgba(15, 23, 42, .68);
+  --border: rgba(15, 23, 42, .10);
 
+  /* cor principal (única) */
+  --primary: #132440;     /* azul mais sóbrio */
+  --primary-ink: #ffffff; /* texto no botão */
+  --primary-soft: rgba(37, 99, 235, .10);
+
+  /* layout */
   --radius: 18px;
   --shadow: 0 16px 45px rgba(15, 23, 42, .12);
-
   --container: 1120px;
 }
 
@@ -22,16 +30,16 @@ body{
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
+  padding-top: 48px;
 
-  /* FUNDO GLOBAL (imagem + seu degradê) */
+  /* FUNDO GLOBAL (imagem + degradê neutro) */
   background:
-    /* overlay claro (o mesmo efeito que você tinha) */
-    linear-gradient(to bottom, rgba(255, 248, 222, .25), #FBFBFB),
-    radial-gradient(900px 400px at 20% 20%, rgba(140,169,255,.35), transparent 60%),
-    radial-gradient(900px 400px at 80% 10%, rgba(170,196,245,.35), transparent 60%),
+    linear-gradient(to bottom, rgba(255,255,255,.70), rgba(251,251,251,.92)),
+    radial-gradient(900px 400px at 20% 20%, rgba(37,99,235,.12), transparent 60%),
+    radial-gradient(900px 400px at 80% 10%, rgba(37,99,235,.08), transparent 60%),
     url("assets/sp.jpg") center/cover no-repeat;
 
-  background-attachment: fixed; /* mantém o fundo “parallax” no scroll */
+  background-attachment: fixed;
 }
 
 a{ color: inherit; text-decoration: none; }
@@ -42,14 +50,19 @@ img{ max-width: 100%; display: block; }
   margin: 0 auto;
 }
 
-/* Header */
+/* =========================
+   Header
+   ========================= */
 .site-header{
-  position: sticky;
+  position: fixed;     /* ✅ sempre visível */
   top: 0;
-  z-index: 50;
-  background: rgba(255, 248, 222, .75);
-  backdrop-filter: blur(10px);
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
+  background: rgba(255,255,255,.60);
   border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
 }
 
 .header-inner{
@@ -58,6 +71,7 @@ img{ max-width: 100%; display: block; }
   justify-content: space-between;
   gap: 16px;
   padding: 14px 0;
+  flex-wrap: nowrap;
 }
 
 .brand{
@@ -70,24 +84,38 @@ img{ max-width: 100%; display: block; }
 .brand-dot{
   width: 12px; height: 12px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  box-shadow: 0 10px 25px rgba(140, 169, 255, .35);
+  background: var(--primary);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, .18);
 }
 
 .nav{
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 22px;        /* espaçamento entre Imóveis, Serviços e CTA */
+  flex: 1;
+  margin-left: 18px; /* respiro após a marca */
 }
 
-.nav a{
+.nav a:not(.btn){
   font-weight: 600;
-  color: rgba(15, 23, 42, .80);
+  color: var(--primary);
 }
 
 .nav a:hover{ opacity: .85; }
 
-/* Buttons */
+/* CTA vai para a direita */
+.nav .nav-cta{
+  margin-left: auto;      /* empurra o botão pra direita */
+}
+
+/* Botão */
+.nav .btn{
+  color: var(--primary-ink);
+}
+
+/* =========================
+   Buttons
+   ========================= */
 .btn{
   display: inline-flex;
   align-items: center;
@@ -97,9 +125,9 @@ img{ max-width: 100%; display: block; }
   border-radius: 999px;
   border: 1px solid transparent;
   background: var(--primary);
-  color: #0b1020;
+  color: var(--primary-ink);
   font-weight: 800;
-  box-shadow: 0 12px 28px rgba(140, 169, 255, .35);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, .20);
   transition: transform .2s ease, filter .2s ease;
 }
 
@@ -107,9 +135,10 @@ img{ max-width: 100%; display: block; }
 .btn:active{ transform: translateY(0px); }
 
 .btn--ghost{
-  background: rgba(255,255,255,.55);
+  background: rgba(255,255,255,.70);
   border-color: var(--border);
   box-shadow: none;
+  color: rgba(15, 23, 42, .92);
 }
 
 .btn--small{
@@ -117,31 +146,34 @@ img{ max-width: 100%; display: block; }
   font-size: 14px;
 }
 
-/* Hero */
+/* =========================
+   Hero
+   ========================= */
 .hero{
   position: relative;
-  min-height: 78vh;
+
+  /* ↓ reduz altura do HERO para aproximar a próxima seção */
+  min-height: 68vh;       /* antes 78vh */
+
   display: grid;
   align-items: center;
   background: transparent;
 }
 
-.hero-overlay{
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(900px 400px at 20% 20%, #FBFBFB, transparent 60%),
-    radial-gradient(900px 400px at 80% 10%, #FBFBFB, transparent 60%);
-  display: none;
+/* ↑ ajustei pra ficar menos “alto demais” */
+.hero-copy{
+  margin-top: -28px;      /* antes -36px */
 }
+
+.hero-overlay{ display: none; }
 
 .hero-inner{
   position: relative;
   display: grid;
   grid-template-columns: 1.25fr .75fr;
   gap: 28px;
-  padding: 70px 0 50px;
+  padding: 70px 0 42px;   /* ↓ reduz um pouco o bottom do hero */
+  align-items: start;
 }
 
 .hero-copy h1{
@@ -159,23 +191,49 @@ img{ max-width: 100%; display: block; }
   line-height: 1.55;
 }
 
+/* pill centralizado */
+.hero-copy .pill{
+  display: table;
+  margin: 0 auto 8px;
+}
+
 .pill{
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(255, 242, 198, .75);
+  background: rgba(255,255,255,.60);
   border: 1px solid var(--border);
   font-weight: 800;
   font-size: 13px;
+  color: rgba(15,23,42,.85);
 }
 
 .hero-actions{
   display: flex;
-  gap: 12px;
+  justify-content: center;
+  gap: 16px;
   flex-wrap: wrap;
   margin-top: 18px;
+}
+
+.hero-actions .btn{
+  min-width: 220px;        /* ajuste se quiser maior/menor */
+  justify-content: center;
+}
+
+.hero-actions .btn,
+.hero-actions .btn--ghost{
+  background: var(--primary);
+  color: var(--primary-ink);
+  border-color: transparent;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, .20);
+}
+
+.hero-actions .btn:hover,
+.hero-actions .btn--ghost:hover{
+  filter: brightness(.98);
 }
 
 .hero-metrics{
@@ -183,6 +241,7 @@ img{ max-width: 100%; display: block; }
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   margin-top: 20px;
+  text-align: center;
 }
 
 .metric{
@@ -190,6 +249,7 @@ img{ max-width: 100%; display: block; }
   background: var(--surface-solid);
   border-radius: 16px;
   padding: 12px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, .08);
 }
 
 .metric-title{
@@ -206,9 +266,16 @@ img{ max-width: 100%; display: block; }
   margin-top: 4px;
 }
 
+/* ✅ Hero-card mais alinhado com hero-copy (subi e reduzi presença) */
+.hero-card{
+  margin-top: -28px;   /* ✅ mesma altura do hero-copy */
+  align-self: start;   /* ✅ garante topo */
+  max-width: 420px;
+  justify-self: end;
+}
+
 .hero-card,
 .contact-box{
-  align-self: center;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--surface-solid);
@@ -217,7 +284,7 @@ img{ max-width: 100%; display: block; }
   text-align: center;
 }
 
-/* ✅ Enquadramento melhor da foto do Cadena */
+/* foto */
 .avatar{
   width: 100%;
   height: auto;
@@ -225,7 +292,7 @@ img{ max-width: 100%; display: block; }
 }
 
 .hero-card-body{
-  padding: 16px 16px 18px;
+  padding: 14px 16px 16px; /* ↓ reduz altura interna */
 }
 
 .hero-card-body h2{
@@ -236,20 +303,15 @@ img{ max-width: 100%; display: block; }
 
 .muted{ color: var(--muted); }
 
-.hero-card-actions{
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-  flex-wrap: wrap;
-}
+/* =========================
+   Sections
+   ========================= */
+.section{ padding: 64px 0; }
+.section--alt{ background: transparent; }
 
-/* Sections */
-.section{
-  padding: 64px 0;
-}
-
-.section--alt{
-  background: transparent;
+/* ✅ Aproxima a seção seguinte do HERO (ex: “Imóveis em destaque”) */
+.hero + .section{
+  padding-top: 36px;      /* antes 64px */
 }
 
 .section-head{
@@ -272,31 +334,38 @@ img{ max-width: 100%; display: block; }
 
 /* =========================
    ✅ CARROSSEL COM SETAS
+   (com múltiplos cards por vez)
    ========================= */
-
-/* wrapper do carrossel */
 .carousel-wrap{
   position: relative;
   display: grid;
   align-items: center;
 }
 
-/* Carousel */
+/* Controle quantos cards aparecem */
 .carousel{
+  --cards: 3;   /* desktop padrão */
+  --gap: 14px;
+
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(260px, 340px);
-  gap: 14px;
+  gap: var(--gap);
+  scrollbar-width: none;
+
+  /* largura de cada card = 100% / quantidade */
+  grid-auto-columns: calc((100% - (var(--gap) * (var(--cards) - 1))) / var(--cards));
 
   overflow-x: auto;
-  padding: 6px 44px 14px; /* ✅ espaço para setas */
+  padding: 6px 44px 14px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-
   border-radius: 20px;
 }
 
-.carousel::-webkit-scrollbar{ height: 10px; }
+.carousel::-webkit-scrollbar{
+  height: 10px;
+  scrollbar-width: none; }
+
 .carousel::-webkit-scrollbar-thumb{
   background: rgba(15,23,42,.18);
   border-radius: 999px;
@@ -331,11 +400,9 @@ img{ max-width: 100%; display: block; }
   transform: translateY(-50%) translateY(-1px);
   filter: brightness(.98);
 }
-.carousel-arrow:active{
-  transform: translateY(-50%);
-}
+.carousel-arrow:active{ transform: translateY(-50%); }
 
-/* Card */
+/* Cards */
 .property-card,
 .action-card{
   scroll-snap-align: start;
@@ -359,12 +426,13 @@ img{ max-width: 100%; display: block; }
   border-radius: 999px;
   font-size: 12px;
   font-weight: 900;
-  background: rgba(140,169,255,.45);
-  border: 1px solid rgba(15,23,42,.10);
+  background: rgba(255,255,255,.55);
+  border: 1px solid var(--border);
+  color: rgba(15,23,42,.85);
 }
 
 .tag--soft{
-  background: rgba(170,196,245,.45);
+  background: rgba(255,255,255,.40);
 }
 
 .property-card h3{
@@ -390,7 +458,7 @@ img{ max-width: 100%; display: block; }
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 10px;
-  background: #FFF2C6;
+  background: rgba(255,255,255,.55);
 }
 
 .k{
@@ -407,53 +475,34 @@ img{ max-width: 100%; display: block; }
   margin-top: 4px;
 }
 
-.price{
-  letter-spacing: -0.01em;
-}
+.price{ letter-spacing: -0.01em; }
 
-/* Chips do carrossel */
-.carousel-controls{
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.chip{
-  width: 34px;
-  height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: #C6E7FF;
-  font-weight: 900;
-}
-
-.chip:hover{
-  background: rgba(170,196,245,.55);
-}
-
-/* Cards finais */
-.cards-2{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
+/* =========================
+   Cards finais
+   ========================= */
+.cards-2{ grid-template-columns: 1fr; }
 
 .action-card{
   display: flex;
   gap: 14px;
   padding: 18px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--surface-solid);
-  box-shadow: 0 12px 28px rgba(15, 23, 42, .10);
   transition: transform .18s ease, filter .18s ease;
 }
 
 .action-card:hover{ transform: translateY(-1px); filter: brightness(.99); }
 
+.action-card h3{
+  margin: 2px 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.action-link{
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 900;
+}
+
+/* Ícones do card do corretor */
 .icon-actions{
   display: flex;
   gap: 12px;
@@ -468,7 +517,7 @@ img{ max-width: 100%; display: block; }
   display: grid;
   place-items: center;
 
-  background: #C6E7FF;
+  background: rgba(255,255,255,.70);
   border: 1px solid var(--border);
   box-shadow: 0 10px 22px rgba(15, 23, 42, .10);
 
@@ -480,36 +529,24 @@ img{ max-width: 100%; display: block; }
   color: #0b1020;
 }
 
-.icon-btn:hover i{
-  color: #AAC4F5; /* mesma cor do botão WhatsApp */
-}
-
 .icon-btn:hover{
   transform: translateY(-1px);
   filter: brightness(.98);
+  border-color: rgba(37,99,235,.30);
 }
 
-.icon-btn:active{
-  transform: translateY(0);
-}
+.icon-btn:hover i{ color: var(--primary); }
+
+.icon-btn:active{ transform: translateY(0); }
 
 .icon-btn:focus-visible{
   outline: 2px solid #0f172a;
   outline-offset: 3px;
 }
 
-.action-card h3{
-  margin: 2px 0 6px;
-  letter-spacing: -0.01em;
-}
-
-.action-link{
-  display: inline-block;
-  margin-top: 8px;
-  font-weight: 900;
-}
-
-/* Contato */
+/* =========================
+   Contato
+   ========================= */
 .contact{
   display: grid;
   place-items: center;
@@ -519,7 +556,7 @@ img{ max-width: 100%; display: block; }
   width: min(760px, 100%);
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: var(--surface-solid);
+  background: var(--surface-strong);
   box-shadow: var(--shadow);
   padding: 22px;
 }
@@ -536,11 +573,14 @@ img{ max-width: 100%; display: block; }
   margin-top: 12px;
 }
 
-/* Footer */
+/* =========================
+   Footer (mesma vibe do header)
+   ========================= */
 .footer{
   border-top: 1px solid var(--border);
   padding: 22px 0;
-  background: rgba(255, 242, 198, .25);
+  background: rgba(255,255,255,.45);
+  backdrop-filter: blur(10px);
 }
 
 .footer-inner{
@@ -550,27 +590,103 @@ img{ max-width: 100%; display: block; }
   gap: 12px;
 }
 
-/* Responsivo */
+/* =========================
+   Responsivo
+   ========================= */
 @media (max-width: 940px){
   .hero-inner{
     grid-template-columns: 1fr;
     padding: 56px 0 40px;
   }
 
-  .hero-card{ max-width: 520px; }
+  .hero-card{
+    max-width: 520px;
+    margin-top: 0;
+    justify-self: start;
+    align-self: start;
+  }
+
+  .hero{
+    min-height: auto;
+  }
+
+  .hero + .section{
+    padding-top: 32px;
+  }
+
+  /* Tablet: 2 cards no carrossel */
+  .carousel{ --cards: 2; }
 }
 
-/* ✅ no mobile: some com setas, mantém swipe */
+/* Mobile */
 @media (max-width: 720px){
-  .nav{ display: none; }
-  .cards-2{ grid-template-columns: 1fr; }
-  .hero-metrics{ grid-template-columns: 1fr; }
 
-  .carousel{ padding: 6px 4px 14px; }
+  /* mantém a navbar visível */
+  .nav{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    margin-left: 12px;
+  }
+
+  .nav a:not(.btn){
+    font-size: 14px;
+    padding: 6px 4px;
+    white-space: nowrap;
+  }
+
+  .nav .btn{
+    padding: 8px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .nav .nav-cta{
+    margin-left: auto;    /* segue empurrando no mobile */
+  }
+
+  .hero-copy{
+    margin-top: -12px;
+  }
+
+  .hero-copy .pill{
+    display: table;
+    margin: 0 auto 8px;
+  }
+
+  .hero{
+    min-height: auto;
+  }
+
+  .hero + .section{
+    padding-top: 28px;
+  }
+
+  .hero-actions{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-actions .btn{
+    width: 100%;
+    max-width: 320px;
+  }
+
+
+  /* Mobile: 1 card */
+  .carousel{
+    --cards: 1;
+    padding: 6px 4px 14px;
+    scrollbar-width: none;
+  }
+
   .carousel-arrow{ display: none; }
 }
 
-/* WhatsApp flutuante (dentro da paleta) */
+/* =========================
+   WhatsApp flutuante
+   ========================= */
 .whatsapp-float{
   position: fixed;
   right: 18px;
@@ -580,7 +696,7 @@ img{ max-width: 100%; display: block; }
   border-radius: 999px;
   display: grid;
   place-items: center;
-  background: #25D366; /* cor oficial WhatsApp */
+  background: #25D366;
   border: none;
   box-shadow: 0 16px 34px rgba(0, 0, 0, .25);
   font-size: 26px;
@@ -588,9 +704,7 @@ img{ max-width: 100%; display: block; }
   transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
 }
 
-.whatsapp-float i{
-  color: #ffffff; /* ícone branco (padrão WhatsApp) */
-}
+.whatsapp-float i{ color: #ffffff; }
 
 .whatsapp-float:hover{
   transform: translateY(-3px) scale(1.05);
@@ -603,11 +717,25 @@ img{ max-width: 100%; display: block; }
   outline-offset: 3px;
 }
 
+/* Centraliza o bloco "serviços" */
 #servicos .section-head{
   justify-content: center;
   text-align: center;
 }
 
 #servicos .section-head > div{
-  max-width: 520px; /* deixa o texto mais elegante */
+  max-width: 520px;
+}
+
+/* Destaque visual do título "Imóveis em destaque" */
+#imoveis .section-head{
+  justify-content: center;   /* centraliza horizontalmente */
+  text-align: center;
+}
+
+#imoveis .section-head h2{
+  font-size: clamp(28px, 4vw, 40px); /* maior e responsivo */
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
 }
