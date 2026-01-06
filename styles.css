@@ -30,7 +30,7 @@ body{
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
-  padding-top: 48px;
+  padding-top: 72px;
 
   /* FUNDO GLOBAL (imagem + degradê neutro) */
   background:
